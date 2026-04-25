@@ -76,14 +76,12 @@ function adminAddProduct() {
     const id = document.getElementById("adm-id").value;
 
     if (name && price && id) {
-        wholesaleProducts.push({
-            id: id,
-            name: name,
-            buy: price,
-            rating: "⭐⭐⭐⭐⭐ (Admin)",
-            stars: 5
-        });
-        log(`🛠 Admin: ${name} zum Shop hinzugefügt.`);
+        const newProduct = { id, name, buy: price, rating: "⭐⭐⭐⭐⭐ (Admin)", stars: 5 };
+        
+        // Speichert es global für JEDEN Spieler
+        database.ref('global/products/' + id).set(newProduct); 
+        
+        log(`🛠 Admin: ${name} wurde für ALLE Spieler veröffentlicht.`);
         renderAdminDashboard();
     }
 }
