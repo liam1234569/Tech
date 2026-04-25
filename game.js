@@ -5,7 +5,7 @@ let activeShopItems = [];
 let myPrices = {};
 let customerCount = 1;
 let employees = 0;
-
+loadGlobalProducts();
 // --- APP STEUERUNG ---
 // In der game.js die openApp Funktion anpassen:
 function openApp(id) {
