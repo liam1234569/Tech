@@ -47,3 +47,20 @@ async function loadGameData() {
 setInterval(() => {
     if (currentUser) saveGameData();
 }, 30000);
+
+// Diese Funktion lädt die Produkte, die DU als Admin erstellt hast
+function loadGlobalProducts() {
+    database.ref('global/products').on('value', (snapshot) => {
+        const globalData = snapshot.val();
+        if (globalData) {
+            // Füge die Admin-Produkte zu den normalen wholesaleProducts hinzu
+            Object.values(globalData).forEach(p => {
+                if (!wholesaleProducts.find(x => x.id === p.id)) {
+                    wholesaleProducts.push(p);
+                }
+            });
+            console.log("🌍 Globale Admin-Produkte geladen.");
+        }
+    });
+}
+
