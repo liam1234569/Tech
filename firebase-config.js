@@ -1,6 +1,6 @@
 // Deine persönlichen Zugangsdaten von der Firebase Console
 const firebaseConfig = {
-  apiKey: "DEIN_API_KEY",
+  apiKey: "AIzaSyBN8UBCAZ9Z_eVpVufUn8E_pgu-ygqa_NQ",
   authDomain: "tech-a74d4.firebaseapp.com",
   databaseURL: "https://tech-a74d4-default-rtdb.europe-west1.firebasedatabase.app", // Aus deinem Screenshot
   projectId: "tech-a74d4",
