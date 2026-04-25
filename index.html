@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech OS - iMac Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="imac-monitor">
+    <div class="os-desktop">
+        
+        <div class="os-topbar">
+            <div class="account-area">
+    <button id="account-btn" onclick="openApp('app-auth')" style="background: #007aff; color: white; border: none; padding: 5px 12px; border-radius: 12px; cursor: pointer; font-size: 12px;">
+        👤 Account
+    </button>
+</div>
+            <div class="status-items">
+                Guthaben: <span id="money">1000</span>€ | 
+                Besucher: <span id="customers">1</span> | 
+                Einkäufer: <span id="employees">0</span>
+            </div>
+        </div>
+
+        <div class="desktop-icons">
+            <div class="icon" onclick="openApp('app-wholesale')">
+                <div class="icon-box" style="background:#ff9500;">📦</div>
+                <span>Großhandel</span>
+            </div>
+            <div class="icon" onclick="openApp('app-devices')">
+                <div class="icon-box" style="background:#555;">📱</div>
+                <span>Devices</span>
+            </div>
+            <div class="icon" onclick="openApp('app-outlet')">
+    <div class="icon-box" style="background:#af52de;">📦</div>
+    <span>XXL Outlet</span>
+</div>
+            <div class="icon" onclick="openApp('app-inventory')">
+                <div class="icon-box" style="background:#34c759;">🏢</div>
+                <span>Lager</span>
+            </div>
+            <div class="icon" onclick="openApp('app-myshop')">
+                <div class="icon-box" style="background:#007aff;">🛒</div>
+                <span>Mein Shop</span>
+            </div>
+            <div class="icon" onclick="openApp('app-marketing')">
+                <div class="icon-box" style="background:#ff3b30;">📢</div>
+                <span>Marketing</span>
+            </div>
+            <div class="icon" onclick="openApp('app-browser')">
+                <div class="icon-box" style="background:#fff; color:#4285F4; border:1px solid #ccc;">G</div>
+                <span>Browser</span>
+            </div>
+            <div class="icon" onclick="openApp('app-bank')">
+                <div class="icon-box" style="background:#ffcc00;">🏦</div>
+                <span>Bank</span>
+            </div>
+            <div class="icon" onclick="openApp('app-cars')">
+                <div class="icon-box" style="background:#8e8e93;">🚗</div>
+                <span>Auto-Schrott</span>
+            </div>
+        </div>
+
+        <div id="app-wholesale" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-wholesale')"></button><span>Amazon Business</span><div style="width:15px;"></div></div>
+            <div id="shop" class="app-content shop-grid"></div>
+        </div>
+
+        <div id="app-devices" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-devices')"></button><span>High-End Tech</span><div style="width:15px;"></div></div>
+            <div id="device-shop" class="app-content shop-grid"></div>
+        </div>
+
+        <div id="app-inventory" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-inventory')"></button><span>Lagerbestand</span><div style="width:15px;"></div></div>
+            <div class="app-content"><p>Teile: <span id="stockCount">0</span></p><ul id="stockList"></ul></div>
+        </div>
+
+        <div id="app-myshop" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-myshop')"></button><span>Shop-Verwaltung</span><div style="width:15px;"></div></div>
+            <div id="storefront" class="app-content"></div>
+        </div>
+
+        <div id="app-marketing" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-marketing')"></button><span>Marketing-HQ</span><div style="width:15px;"></div></div>
+            <div class="app-content"></div>
+        </div>
+
+        <div id="app-mgmt" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-mgmt')"></button><span>Management</span><div style="width:15px;"></div></div>
+            <div class="app-content"></div>
+        </div>
+
+        <div id="app-browser" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-browser')"></button><span>Web-Browser</span><div style="width:15px;"></div></div>
+            <div class="app-content" style="background:white;"></div>
+        </div>
+
+        <div id="app-bank" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-bank')"></button><span>Zentralbank</span><div style="width:15px;"></div></div>
+            <div class="app-content"></div>
+        </div>
+
+        <div id="app-cars" class="app-window" style="display:none;">
+            <div class="app-header"><button class="close-btn" onclick="closeApp('app-cars')"></button><span>Autohaus</span><div style="width:15px;"></div></div>
+            <div class="app-content"></div>
+        </div>
+        <div id="app-outlet" class="app-window" style="display:none;">
+    <div class="app-header">
+        <button class="close-btn" onclick="closeApp('app-outlet')"></button>
+        <span>XXL Factory Outlet</span>
+        <div style="width:15px;"></div>
+    </div>
+    <div class="app-content"></div>
+</div>
+<div id="app-auth" class="app-window" style="display:none;">
+    <div class="app-header">
+        <button class="close-btn" onclick="closeApp('app-auth')"></button>
+        <span>Benutzerkonto</span>
+    </div>
+    <div class="app-content" id="auth-content" style="padding: 20px; text-align: center; color: black;">
+        </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script src="auth.js"></script>
+<script src="db.js"></script>
+
+        <div class="os-log" id="log"></div>
+    </div>
+</div>
+
+<button id="admin-trigger" onclick="openAdminPanel()" style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.2); border:none; color:rgba(255,255,255,0.3); font-size:10px; padding:5px; border-radius:5px; cursor:pointer; z-index:9999;">Admin</button>
+
+<div id="admin-modal" class="app-window" style="display:none; z-index:10000; background: white;">
+    <div class="app-header">
+        <button class="close-btn" onclick="closeAdminPanel()"></button>
+        <span style="color: black;">System Administrator</span>
+    </div>
+    <div id="admin-content" class="app-content"></div>
+</div>
+
+<script src="firebase-config.js"></script>
+<script src="auth.js"></script>
+<script src="db.js"></script>
+<script src="shop.js"></script>
+<script src="game.js"></script>
+<script src="customers.js"></script>
+<script src="economy.js"></script>
+<script src="marketing.js"></script>
+<script src="features.js"></script>
+<script src="browser.js"></script>
+<script src="outlet.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
